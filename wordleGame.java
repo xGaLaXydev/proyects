@@ -2,7 +2,7 @@ package ejercicios;
 import java.util.Random;
 import java.util.Scanner;
 
-public class wordle_isra {
+public class wordleGame {
 	static String palabraSecreta;
 	static int numIntConsumidos=5;
 	static int numLetrasAdivinadas=0;

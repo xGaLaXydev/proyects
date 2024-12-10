@@ -1,4 +1,4 @@
-package ud4;
+package ("package_name");
 
 import java.util.Scanner;
 

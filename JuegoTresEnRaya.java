@@ -1,4 +1,4 @@
-package Examen3EnRaya;
+package ("package_name");
 
 import java.util.Scanner;
 

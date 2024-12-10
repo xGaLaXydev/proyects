@@ -2,7 +2,7 @@ package Examen3EnRaya;
 
 import java.util.Scanner;
 
-public class JuegoTresEnRayaISRAEL {
+public class JuegoTresEnRaya {
 	static Scanner in = new Scanner(System.in);
 	static char[] tablero = new char[9];
 	

@@ -186,10 +186,10 @@ public class wordle_Isra {
 		}
 		return true;
 	}
-	//Se comprueba que no haya dos vocales seguidas en la palabra que introduce el usuario.
+	//Se comprueba que no haya dos vocales iguales seguidas en la palabra que introduce el usuario.
 	private static boolean vocalesSeguidas(String palabra) {
 		if(palabra.contains("aa")||palabra.contains("ee")||palabra.contains("ii")||palabra.contains("oo")||palabra.contains("uu")) {
-			System.out.println("No puedes introducir dos vocales seguidas!!");
+			System.out.println("No puedes introducir dos vocales iguales seguidas!!");
 			return false;
 		}
 		return true;

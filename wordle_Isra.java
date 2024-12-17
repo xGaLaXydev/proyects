@@ -210,6 +210,7 @@ public class wordle_Isra {
 		numIntConsumidos=5;
 		numLetrasAdivinadas=0;
 	}
+	//Muestra las letras de la palabra adivinada.
 	private static void mostrarPalabraAdivinada(String palabra) {
 		System.out.println("-----------");
 		for(int i=0;i<5;i++) {

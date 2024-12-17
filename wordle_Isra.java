@@ -7,7 +7,6 @@ public class wordle_Isra {
 	static int numIntConsumidos=5;
 	static int numLetrasAdivinadas=0;
 	static Scanner sc=new Scanner(System.in);
-	static Random random=new Random();
 	public static void main(String[] args) {
 		char opcion='p';
 		int maquina=0;
@@ -90,6 +89,7 @@ public class wordle_Isra {
 	}
 	//Elige una palabra aleatoria de entre 20 posibles.
 	public static String generaPalabra() {
+		Random random=new Random();
 		String [] palabras = {"Amigo", "Lucha", "Cebra", "Santa", "Barco", 
 	            "Silla", "Rango", "Llave", "Tinto", "Lanza", 
 	            "Canto", "Verde", "Ciego", "Trago", "Salto", 

@@ -1,8 +1,8 @@
-package ("package_name");
+package ejercicios;
 import java.util.Random;
 import java.util.Scanner;
 
-public class wordleGame {
+public class wordle_Isra {
 	static String palabraSecreta;
 	static int numIntConsumidos=5;
 	static int numLetrasAdivinadas=0;
@@ -24,7 +24,7 @@ public class wordleGame {
 			palabraIntroducida=sc.nextLine();
 			if (comprobaciones(palabraIntroducida)) {
 				palabraAdivinada=compruebaLetrasAcertadas(palabraIntroducida);
-				System.out.println(palabraAdivinada);
+				mostrarPalabraAdivinada(palabraAdivinada);
 			}
 			if (haGanadoJugador()) {
 				System.out.println("Has ganado la partida");
@@ -97,7 +97,7 @@ public class wordleGame {
 		return palabras[random.nextInt(20)];
 	}
 	//Unimos todas las comprobaciones en una única función.
-	public static boolean comprobaciones(String palabra) {
+	private static boolean comprobaciones(String palabra) {
 		if (longitud(palabra)&&contenido(palabra)&&vocales(palabra)&&consonantes(palabra)&&letraTerminada(palabra)&&vocalesSeguidas(palabra)) {
 			return true;
 		}
@@ -105,7 +105,7 @@ public class wordleGame {
 		return false;
 	}
 	//Se comprueba que la longitud de nuestra palabra es de 5 letras.
-	public static boolean longitud(String palabra) {
+	private static boolean longitud(String palabra) {
 		if (palabra.length()!=5) {
 			System.out.println("Introduce una palabra de exactamente 5 letras!!");
 			return false;
@@ -113,7 +113,7 @@ public class wordleGame {
 		return true;
 	}
 	//Se comprueba que la palabra solo contenga letras.
-	public static boolean contenido(String palabra) {
+	private static boolean contenido(String palabra) {
 		if (palabra.substring(0,5).matches("[A-Z]*")||palabra.substring(0,5).matches("[a-z]*")||palabra.substring(0,5).matches("ñ")) {
 			return true;
 		}
@@ -121,7 +121,7 @@ public class wordleGame {
 		return false;
 	}
 	//Se comprueba que la palabra tenga 2 o 3 vocales.
-	public static boolean vocales(String palabra) {
+	private static boolean vocales(String palabra) {
 		int contadorVocales=0;
 		for(int i=0;i<palabra.length();i++) {
 			if (palabra.charAt(i)=='a'
@@ -144,7 +144,7 @@ public class wordleGame {
 		return true;
 	}
 	//Se comprueba que la palabra no contenga mas de 3 consonantes seguidas.
-	public static boolean consonantes(String palabra) {
+	private static boolean consonantes(String palabra) {
 		int contadorConsonantes=0;
 		for(int i=0;i<palabra.length();i++) {
 			if (palabra.charAt(i)!='a'
@@ -179,7 +179,7 @@ public class wordleGame {
 		return true;
 	}
 	//Se comprueba que la palabra no termina en q, w o x. 
-	public static boolean letraTerminada(String palabra) {
+	private static boolean letraTerminada(String palabra) {
 		if (palabra.charAt(palabra.length()-1)=='q'||palabra.charAt(palabra.length()-1)=='w'||palabra.charAt(palabra.length()-1)=='x') {
 			System.out.println("La palabra no puede terminar ni en 'q', ni en 'w' ni en 'x'!!");
 			return false;
@@ -187,7 +187,7 @@ public class wordleGame {
 		return true;
 	}
 	//Se comprueba que no haya dos vocales seguidas en la palabra que introduce el usuario.
-	public static boolean vocalesSeguidas(String palabra) {
+	private static boolean vocalesSeguidas(String palabra) {
 		if(palabra.contains("aa")||palabra.contains("ee")||palabra.contains("ii")||palabra.contains("oo")||palabra.contains("uu")) {
 			System.out.println("No puedes introducir dos vocales seguidas!!");
 			return false;
@@ -195,7 +195,7 @@ public class wordleGame {
 		return true;
 	}
 	//Se comprueba que la respuesta sea si o no.
-	public static char controlarRespuesta() {
+	private static char controlarRespuesta() {
 		System.out.println("¿Deseas jugar otra partida?");
 		char respuesta=sc.nextLine().charAt(0);
 		while (respuesta!='n'&&respuesta!='N'&&respuesta!='s'&&respuesta!='S') {
@@ -205,9 +205,17 @@ public class wordleGame {
 		return respuesta;
 	}
 	//Resetea todas las variables globales para evitar errores.
-	public static void resetearVariablesGlobales() {
+	private static void resetearVariablesGlobales() {
 		palabraSecreta=generaPalabra();
 		numIntConsumidos=5;
 		numLetrasAdivinadas=0;
+	}
+	private static void mostrarPalabraAdivinada(String palabra) {
+		System.out.println("-----------");
+		for(int i=0;i<5;i++) {
+			System.out.print("|"+palabra.charAt(i));
+		}
+		System.out.print("|\n");
+		System.out.println("-----------");
 	}
 }

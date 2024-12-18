@@ -70,7 +70,7 @@ public class wordle_Isra {
 				adivinada+=palabra.toUpperCase().charAt(i);
 				numLetrasAdivinadas++;
 				if (adivinada.length()==5) {
-					break;
+					return adivinada;
 				}
 			} else {
 				for(int j=0;j<palabra.length();j++) {

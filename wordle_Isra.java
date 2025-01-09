@@ -23,6 +23,7 @@ public class wordle_Isra {
 			if (comprobaciones(palabraIntroducida)) {
 				palabraAdivinada=compruebaLetrasAcertadas(palabraIntroducida);
 				mostrarPalabraAdivinada(palabraAdivinada);
+				System.out.println("Te quedan "+numIntConsumidos+" intentos.");
 			}
 			if (haGanadoJugador()) {
 				System.out.println("Has ganado la partida");

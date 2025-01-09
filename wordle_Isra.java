@@ -121,18 +121,14 @@ public class wordle_Isra {
 	}
 	//Se comprueba que la palabra tenga 2 o 3 vocales.
 	private static boolean vocales(String palabra) {
+		palabra=palabra.toLowerCase();
 		int contadorVocales=0;
 		for(int i=0;i<palabra.length();i++) {
 			if (palabra.charAt(i)=='a'
-				||palabra.charAt(i)=='A'
 				||palabra.charAt(i)=='e'
-				||palabra.charAt(i)=='E'
 				||palabra.charAt(i)=='i'
-				||palabra.charAt(i)=='I'
 				||palabra.charAt(i)=='o'
-				||palabra.charAt(i)=='O'
-				||palabra.charAt(i)=='u'
-				||palabra.charAt(i)=='U') {
+				||palabra.charAt(i)=='u') {
 				contadorVocales++;
 			}
 		}
@@ -144,30 +140,21 @@ public class wordle_Isra {
 	}
 	//Se comprueba que la palabra no contenga mas de 3 consonantes seguidas.
 	private static boolean consonantes(String palabra) {
+		palabra=palabra.toLowerCase();
 		int contadorConsonantes=0;
 		for(int i=0;i<palabra.length();i++) {
 			if (palabra.charAt(i)!='a'
-				&&palabra.charAt(i)!='A'
 				&&palabra.charAt(i)!='e'
-				&&palabra.charAt(i)!='E'
 				&&palabra.charAt(i)!='i'
-				&&palabra.charAt(i)!='I'
 				&&palabra.charAt(i)!='o'
-				&&palabra.charAt(i)!='O'
-				&&palabra.charAt(i)!='u'
-				&&palabra.charAt(i)!='U') {
+				&&palabra.charAt(i)!='u') {
 				contadorConsonantes++;
 			}
 			if (palabra.charAt(i)=='a'
-				||palabra.charAt(i)=='A'
 				||palabra.charAt(i)=='e'
-				||palabra.charAt(i)=='E'
 				||palabra.charAt(i)=='i'	
-				||palabra.charAt(i)=='I'
 				||palabra.charAt(i)=='o'
-				||palabra.charAt(i)=='O'
-				||palabra.charAt(i)=='u'
-				||palabra.charAt(i)=='U') {
+				||palabra.charAt(i)=='u') {
 				contadorConsonantes=0;
 			}
 			if (contadorConsonantes>3) {
@@ -179,6 +166,7 @@ public class wordle_Isra {
 	}
 	//Se comprueba que la palabra no termina en q, w o x. 
 	private static boolean letraTerminada(String palabra) {
+		palabra=palabra.toLowerCase();
 		if (palabra.charAt(palabra.length()-1)=='q'||palabra.charAt(palabra.length()-1)=='w'||palabra.charAt(palabra.length()-1)=='x') {
 			System.out.println("La palabra no puede terminar ni en 'q', ni en 'w' ni en 'x'!!");
 			return false;
@@ -187,6 +175,7 @@ public class wordle_Isra {
 	}
 	//Se comprueba que no haya dos vocales iguales seguidas en la palabra que introduce el usuario.
 	private static boolean vocalesSeguidas(String palabra) {
+		palabra=palabra.toLowerCase();
 		if(palabra.contains("aa")||palabra.contains("ee")||palabra.contains("ii")||palabra.contains("oo")||palabra.contains("uu")) {
 			System.out.println("No puedes introducir dos vocales iguales seguidas!!");
 			return false;
@@ -213,7 +202,24 @@ public class wordle_Isra {
 	private static void mostrarPalabraAdivinada(String palabra) {
 		System.out.println("-----------");
 		for(int i=0;i<5;i++) {
-			System.out.print("|"+palabra.charAt(i));
+			if (Character.isUpperCase(palabra.charAt(i))) {
+				String car="\033[32m"+palabra.charAt(i)+"";
+				System.out.print("|");
+				System.out.print(car);
+				System.out.print("\u001B[0m");
+			}
+			if (Character.isLowerCase(palabra.charAt(i))) {
+				String car="\033[33m"+palabra.charAt(i)+"";
+				System.out.print("|");
+				System.out.print(car);
+				System.out.print("\u001B[0m");
+			}
+			if (!Character.isLetter(palabra.charAt(i))) {
+				String car="\033[61m"+palabra.charAt(i)+"";
+				System.out.print("|");
+				System.out.print(car);
+				System.out.print("\u001B[0m");
+			}
 		}
 		System.out.print("|\n");
 		System.out.println("-----------");

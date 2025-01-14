@@ -1,6 +1,7 @@
 package ejercicios;
 import java.util.Random;
 import java.util.Scanner;
+
 public class wordle_Isra {
 	static String palabraSecreta;
 	static int numIntConsumidos=5;
@@ -77,7 +78,7 @@ public class wordle_Isra {
 				for(int j=0;j<palabra.length();j++) {
 					if (palabra.toUpperCase().charAt(i)==palabraSecreta.toUpperCase().charAt(j)) {
 						adivinada+=palabra.toLowerCase().charAt(i);
-						break;
+						j=palabra.length();
 					}
 				}
 				if (adivinada.length()!=i+1) {
@@ -114,11 +115,18 @@ public class wordle_Isra {
 	}
 	//Se comprueba que la palabra solo contenga letras.
 	private static boolean contenido(String palabra) {
-		if (palabra.substring(0,5).matches("[A-Z]*")||palabra.substring(0,5).matches("[a-z]*")||palabra.substring(0,5).matches("ñ")) {
-			return true;
+		boolean result=true;
+		int j=0;
+		for(int i=1;i<palabra.length();i++) {
+			if (!palabra.substring(j,i).matches("[A-Z]*")&&!palabra.substring(j,i).matches("[a-z]*")&&!palabra.substring(j,i).matches("ñ")&&!palabra.substring(j,i).matches("Ñ")) {
+				result=false;
+			}
+			j++;
 		}
-		System.out.println("Introduce solamente letras!!");
-		return false;
+		if (!result) {
+			System.out.println("Introduce solamente letras!!");
+		}
+		return result;
 	}
 	//Se comprueba que la palabra tenga 2 o 3 vocales.
 	private static boolean vocales(String palabra) {
